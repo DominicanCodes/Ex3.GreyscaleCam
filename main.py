@@ -8,15 +8,11 @@ st.title("Color to B/W photo converter")
 uploaded_image = st.file_uploader("Upload Image")
 
 # print(1, uploaded_image)
-os_check = st.empty()
-os_check.info(platform.system())
+
 # Stop the display of this widget for iOS (Ease of Access)
-if platform.system() != 'Darwin':
-    with st.expander("Start Camera"):
-        # Start the camera
-        camera_image = st.camera_input("Camera")
-else:
-    camera_image = None
+with st.expander("Start Camera"):
+    # Start the camera
+    camera_image = st.camera_input("Camera")
 
 # Create a pillow image instance
 if camera_image:
