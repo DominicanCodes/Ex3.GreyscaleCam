@@ -2,12 +2,14 @@ import streamlit as st
 import platform
 from PIL import Image
 
+st.title("Color to B/W photo converter")
 
 # Allow uploading photo (Preferred for iOS users)
 uploaded_image = st.file_uploader("Upload Image")
 
 # print(1, uploaded_image)
-
+os_check = st.empty()
+os_check.info(platform.system())
 # Stop the display of this widget for iOS (Ease of Access)
 if platform.system() != 'Darwin':
     with st.expander("Start Camera"):
