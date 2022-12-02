@@ -1,14 +1,20 @@
 import streamlit as st
+import platform
 from PIL import Image
 
-# Allow uploading photo
+
+# Allow uploading photo (Preferred for iOS users)
 uploaded_image = st.file_uploader("Upload Image")
 
 # print(1, uploaded_image)
 
-with st.expander("Start Camera"):
-    # Start the camera
-    camera_image = st.camera_input("Camera")
+# Stop the display of this widget for iOS (Ease of Access)
+if platform.system() != 'Darwin':
+    with st.expander("Start Camera"):
+        # Start the camera
+        camera_image = st.camera_input("Camera")
+else:
+    camera_image = None
 
 # Create a pillow image instance
 if camera_image:
